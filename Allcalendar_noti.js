@@ -26,7 +26,7 @@ function sendCalendarEventsToLine() {
         contents: [
           {
             type: "text",
-            text: "ภารกิจพรุ่งนี้ของ: " + calendar.getName(),
+            text: "ภารกิจพรุ่งนี้ของ: " + calendar.getName().replace('@gmail.com', ''),
             weight: "bold",
             size: "lg",
             color: "#00CC00",
