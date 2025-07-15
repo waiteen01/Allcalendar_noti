@@ -1,5 +1,5 @@
-var CHANNEL_ACCESS_TOKEN = ''; //วาง chennel access token
-var GROUP_ID = ''; // วาง group id
+var CHANNEL_ACCESS_TOKEN = 'xxx';
+var GROUP_ID = 'xxx';
 
 function sendCalendarEventsToLine() {
   var now = new Date();
@@ -7,8 +7,6 @@ function sendCalendarEventsToLine() {
   var tomorrowEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 2, 0, 0, 0);
 
   var calendars = CalendarApp.getAllCalendars();
-});
-
 
   var flexContents = {
     type: 'carousel',
@@ -17,7 +15,7 @@ function sendCalendarEventsToLine() {
 
   calendars.forEach(function(calendar) {
     var events = calendar.getEvents(tomorrowStart, tomorrowEnd);
-    if (events.length === 0) return; // ข้ามถ้าไม่มีภารกิจ
+    if (events.length === 0) return;
 
     var bubble = {
       type: "bubble",
@@ -28,7 +26,7 @@ function sendCalendarEventsToLine() {
         contents: [
           {
             type: "text",
-            text: "ภารกิจพรุ่งนี้ของ: " + calendar.getName(), ''),
+            text: "ภารกิจพรุ่งนี้ของ: " + calendar.getName(),
             weight: "bold",
             size: "lg",
             color: "#00CC00",
@@ -115,7 +113,6 @@ function sendCalendarEventsToLine() {
 
   UrlFetchApp.fetch('https://api.line.me/v2/bot/message/push', options);
 }
-
 
 // ✅ ฟังก์ชันแปลงวันที่เป็นรูปแบบไทย
 function formatThaiDate(date) {
